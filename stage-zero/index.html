@@ -4,30 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile Card</title>
-    <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
   </head>
-  <body>
-    <header>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #202632;
+      color: white;
+      overflow-x: hidden;
+    "
+  >
+    <header
+      style="background-color: #313a49; padding: 1rem 0; text-align: center"
+    >
       <h1>My Profile Card</h1>
     </header>
-    <section>
+    <section style="text-align: center; margin-top: 2rem">
       <div>
         <img
-          class="profile"
-          src="./assets/dp.webp"
+          style="border: 7px solid white; border-radius: 50%"
+          src="dp.webp"
           alt="my profile"
           data-testid="profilePicture"
         />
+        <h3 data-testid="fullName">Paul Prosper Lawer</h3>
+        <p data-testid="emailAddress">prospaul999@gmail.com</p>
       </div>
       <div>
-        <h3 data-testid="fullName">Paul Prosper Lawer</h3>
         <p data-testid="jobTitle">Full Stack Developer</p>
-        <p data-testid="emailAddress">prospaul999@gmail.com</p>
-        <p class="bio" data-testid="shortBio">
+
+        <p
+          style="width: 70%; margin: 0 auto; line-height: 1.5"
+          data-testid="shortBio"
+        >
           Front-end Developer with hands-on experience in building responsive
           web applications using React, JavaScript, and modern web technologies.
           Proven skills in teamwork, leadership, and organizing impactful
@@ -36,19 +50,36 @@
         </p>
         <p data-testid="currentLocation">Koforidua - Ghana</p>
 
-        <div class="profile-details">
+        <div style="align-items: center; display: inline-flex">
           <p data-testid="currentTimeUTC" id="utc-time"></p>
-          <span class="dot"></span>
+          <span
+            style="
+              background-color: white;
+              width: 7px;
+              height: 6px;
+              border-radius: 50%;
+              margin: 0 10px;
+            "
+          ></span>
           <p id="dayOfWeek"></p>
         </div>
         <div data-testid="socialLinks">
-          <a href="https://x.com/1skepta" target="_blank">
+          <a
+            style="color: white; font-size: 1.6rem"
+            href="https://x.com/1skepta"
+            target="_blank"
+          >
             <i class="fa-brands fa-twitter"></i>
           </a>
-          <a href="https://github.com/1skepta" target="_blank">
+          <a
+            style="color: white; font-size: 1.6rem"
+            href="https://github.com/1skepta"
+            target="_blank"
+          >
             <i class="fa-brands fa-github"></i>
           </a>
           <a
+            style="color: white; font-size: 1.6rem"
             href="www.linkedin.com/in/paul-prosper-lawer-23419021a"
             target="_blank"
           >
@@ -97,5 +128,15 @@
         displayUTCTime();
       };
     </script>
+
+    <style>
+      @media screen and (min-width: 768px) {
+        section {
+          display: flex;
+          padding: 0 10rem;
+          align-items: center;
+        }
+      }
+    </style>
   </body>
 </html>
