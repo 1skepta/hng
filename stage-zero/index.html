@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Website</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>My Profile Card</h1>
+    </header>
+    <main>
+      <section id="about">
+        <h1>BIO</h1>
+        <img
+          class="profile"
+          src="./assets/dp.png"
+          width="334"
+          height="362"
+          alt="my profile"
+          data-testid="profilePicture"
+        />
+        <h3 data-testid="fullName">Paul Prosper Lawer</h3>
+        <p data-testid="jobTitle">Full Stack Developer</p>
+        <p data-testid="emailAddress">prospaul999@gmail.com</p>
+        <p data-testid="shortBio">
+          Front-end Developer with hands-on experience in building responsive
+          web applications using React, JavaScript, and modern web technologies.
+          Proven skills in teamwork, leadership, and organizing impactful
+          workshops. Passionate about creating intuitive user interfaces and
+          optimizing user experiences.
+        </p>
+        <p data-testid="currentLocation">Koforidua - Ghana</p>
+
+        <div class="profile-details">
+          <p data-testid="currentTimeUTC" id="utc-time"></p>
+          <span class="dot"></span>
+          <p id="dayOfWeek"></p>
+        </div>
+        <div data-testid="socialLinks">
+          <a href="https://twitter" target="_blank">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="https://twitter" target="_blank">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://twitter" target="_blank">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const today = new Date();
+      const daysOfWeek = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      const dayIndex = today.getDay();
+      document.getElementById(
+        "dayOfWeek"
+      ).textContent = `${daysOfWeek[dayIndex]}`;
+
+      function displayUTCTime() {
+        var now = new Date();
+
+        var hours = now.getUTCHours();
+        var minutes = now.getUTCMinutes();
+        var seconds = now.getUTCSeconds();
+
+        var timeString =
+          pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2);
+
+        document.getElementById("utc-time").textContent = timeString;
+      }
+      function pad(number, length) {
+        var str = "" + number;
+        while (str.length < length) {
+          str = "0" + str;
+        }
+        return str;
+      }
+      window.onload = function () {
+        displayUTCTime();
+      };
+    </script>
+  </body>
+</html>
