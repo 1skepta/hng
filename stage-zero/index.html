@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Website</title>
+    <title>Profile Card</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
@@ -14,21 +14,20 @@
     <header>
       <h1>My Profile Card</h1>
     </header>
-    <main>
-      <section id="about">
-        <h1>BIO</h1>
+    <section>
+      <div>
         <img
           class="profile"
-          src="./assets/dp.png"
-          width="334"
-          height="362"
+          src="./assets/dp.webp"
           alt="my profile"
           data-testid="profilePicture"
         />
+      </div>
+      <div>
         <h3 data-testid="fullName">Paul Prosper Lawer</h3>
         <p data-testid="jobTitle">Full Stack Developer</p>
         <p data-testid="emailAddress">prospaul999@gmail.com</p>
-        <p data-testid="shortBio">
+        <p class="bio" data-testid="shortBio">
           Front-end Developer with hands-on experience in building responsive
           web applications using React, JavaScript, and modern web technologies.
           Proven skills in teamwork, leadership, and organizing impactful
@@ -43,18 +42,21 @@
           <p id="dayOfWeek"></p>
         </div>
         <div data-testid="socialLinks">
-          <a href="https://twitter" target="_blank">
+          <a href="https://x.com/1skepta" target="_blank">
             <i class="fa-brands fa-twitter"></i>
           </a>
-          <a href="https://twitter" target="_blank">
+          <a href="https://github.com/1skepta" target="_blank">
             <i class="fa-brands fa-github"></i>
           </a>
-          <a href="https://twitter" target="_blank">
+          <a
+            href="www.linkedin.com/in/paul-prosper-lawer-23419021a"
+            target="_blank"
+          >
             <i class="fa-brands fa-linkedin"></i>
           </a>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
     <script>
       const today = new Date();
