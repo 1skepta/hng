@@ -1,1 +1,1 @@
-[Live Link](https://stage-one-ebon.vercel.app//)
+[Live Link](https://stage-one-ebon.vercel.app/)
