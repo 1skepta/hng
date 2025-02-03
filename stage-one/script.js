@@ -53,12 +53,12 @@ function handleGuess(event) {
   const selectedColor = event.target.style.backgroundColor;
 
   if (selectedColor === targetColor) {
-    gameStatus.textContent = "Correct!";
+    gameStatus.textContent = "Correct! 🎉";
     correctCount++;
     correctScoreDisplay.textContent = "Correct: " + correctCount;
     event.target.style.border = "5px solid limegreen";
   } else {
-    gameStatus.textContent = "Wrong!";
+    gameStatus.textContent = "Wrong! ❌";
     wrongCount++;
     wrongScoreDisplay.textContent = "Wrong: " + wrongCount;
     event.target.style.border = "5px solid red";
