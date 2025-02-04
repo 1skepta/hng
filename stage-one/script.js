@@ -58,7 +58,7 @@ function handleGuess(event) {
     correctScoreDisplay.textContent = "Correct: " + correctCount;
     event.target.style.border = "5px solid limegreen";
   } else {
-    gameStatus.textContent = "Wrong! ❌";
+    gameStatus.textContent = "Wrong! ❌❌❌";
     wrongCount++;
     wrongScoreDisplay.textContent = "Wrong: " + wrongCount;
     event.target.style.border = "5px solid red";
