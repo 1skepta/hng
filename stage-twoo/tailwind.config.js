@@ -1,11 +1,10 @@
-module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}", // Ensures Tailwind scans all component files
+  ],
   theme: {
     extend: {},
   },
-  variants: {
-    extend: {},
-  },
   plugins: [],
-}
+};
