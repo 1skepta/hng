@@ -1,10 +1,13 @@
 import React from "react";
 import Header from "../Header/Header";
+import styles from "./Landing.module.css";
+import TicketSelection from "../TicketSelection/TicketSelection";
 
 function Landing() {
   return (
-    <div style={{ backgroundColor: "#02191d" }}>
+    <div className={styles.back}>
       <Header />
+      <TicketSelection />
     </div>
   );
 }

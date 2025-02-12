@@ -1,12 +1,13 @@
 import React from "react";
+import styles from "./Header.module.css";
 
 function Header() {
   return (
-    <div className="text-white flex flex-r" style={{ backgroundColor: "#031e23" }}>
+    <div className={styles.parent}>
       <div>
-        <img src="logo.png" alt="logo" />
+        <img src="logo.png" alt="my logo" />
       </div>
-      <div className="text-white">MY TICKETS &#8594;</div>
+      <div className={styles.myticket}>MY TICKETS &#8594;</div>
     </div>
   );
 }

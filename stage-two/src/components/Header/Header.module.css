@@ -1,0 +1,15 @@
+.parent {
+  display: flex;
+  background-color: #031e23;
+  border: 1px solid #0d4751;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+}
+.myticket {
+  background-color: white;
+  padding: 15px 10px;
+  border-radius: 5px;
+}
