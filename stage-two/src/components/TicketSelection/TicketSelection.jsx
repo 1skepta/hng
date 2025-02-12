@@ -29,9 +29,19 @@ function TicketSelection() {
       <div>
         <h2>Select Ticket Type:</h2>
         <div className={styles.ticketType}>
-          <div>
+          <div className={styles.lists}>
             <h1>Free</h1>
             <p>REGULAR ACCESS</p>
+            <span>20/52</span>
+          </div>{" "}
+          <div className={styles.lists}>
+            <h1>$150</h1>
+            <p>VIP ACCESS</p>
+            <span>20/52</span>
+          </div>{" "}
+          <div className={styles.lists}>
+            <h1>$150</h1>
+            <p>VVIP ACCESS</p>
             <span>20/52</span>
           </div>
         </div>
