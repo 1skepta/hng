@@ -12,6 +12,30 @@ function TicketSelection() {
           <span className={styles.dark}></span>
         </div>
       </div>
+      <div className={styles.techember}>
+        <h1>
+          <em>T</em>ec<em>h</em>ember Fest "25
+        </h1>
+        <p>
+          Join us for an unforgettable experience at [Event Name]! Secure your
+          spot now.
+        </p>
+        <h3>🍭 [Event Location]​</h3>
+        <h3>March 15, 2025 | 7:00 PM</h3>
+      </div>
+      <div className={styles.line}>
+        <span className={styles.dark}></span>
+      </div>
+      <div>
+        <h2>Select Ticket Type:</h2>
+        <div className={styles.ticketType}>
+          <div>
+            <h1>Free</h1>
+            <p>REGULAR ACCESS</p>
+            <span>20/52</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
