@@ -39,3 +39,29 @@
   width: 30%;
   border-radius: 5px;
 }
+.upload {
+  border: 1px solid #0c3a41;
+  background-color: #082228;
+  border-radius: 20px;
+  padding: 20px 20px 30px 20px;
+}
+.upload h2 {
+  font-size: 1.4rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+.uploaddiv {
+  background-color: #0e464f;
+  border-radius: 30px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border: 4px solid #24a0b5;
+  padding: 70px 50px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.uploaddiv span {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
