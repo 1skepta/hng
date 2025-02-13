@@ -12,11 +12,16 @@ function AttendeeDetails() {
   });
 
   const [isEmailValid, setIsEmailValid] = useState(true);
+  const [emailTouched, setEmailTouched] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem("name", formData.name);
-    localStorage.setItem("email", formData.email);
-    localStorage.setItem("project", formData.project);
+    const timeout = setTimeout(() => {
+      localStorage.setItem("name", formData.name);
+      localStorage.setItem("email", formData.email);
+      localStorage.setItem("project", formData.project);
+    }, 500);
+
+    return () => clearTimeout(timeout);
   }, [formData]);
 
   const handleUploadClick = () => {
@@ -36,10 +41,22 @@ function AttendeeDetails() {
     }
   };
 
+  const handleBlur = (e) => {
+    if (e.target.name === "email") {
+      setEmailTouched(true);
+    }
+  };
+
   const handleSubmit = (e) => {
     if (!isEmailValid) {
       e.preventDefault();
       alert("Please enter a valid email address.");
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e);
     }
   };
 
@@ -76,7 +93,7 @@ function AttendeeDetails() {
       </div>
 
       <div className={styles.details}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
           <div className={styles.name}>
             <h3>Enter your name</h3>
             <input
@@ -96,10 +113,11 @@ function AttendeeDetails() {
               name="email"
               value={formData.email}
               onChange={handleChange}
+              onBlur={handleBlur}
               required
               placeholder="Your email address"
             />
-            {!isEmailValid && (
+            {!isEmailValid && emailTouched && (
               <p className={styles.error}>Invalid email address</p>
             )}
           </div>
@@ -114,11 +132,14 @@ function AttendeeDetails() {
               placeholder="Textarea"
             ></textarea>
           </div>
+
           <div className={styles.nextncancel}>
             <button className={styles.submit} type="submit">
               Get My Free Ticket
             </button>
-            <button className={styles.cancel}>Back</button>
+            <button className={styles.cancel} type="button">
+              Back
+            </button>
           </div>
         </form>
       </div>

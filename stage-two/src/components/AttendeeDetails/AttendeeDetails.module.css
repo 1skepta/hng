@@ -68,7 +68,7 @@
 }
 
 .nextncancel {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .nextncancel button {
   text-align: center;
@@ -112,4 +112,7 @@
 }
 .details textarea {
   height: 90px;
+}
+.error {
+  color: red;
 }
