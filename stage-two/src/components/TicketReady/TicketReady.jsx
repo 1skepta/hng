@@ -17,6 +17,10 @@ function TicketReady() {
         <h1>Your Ticket is Booked!</h1>
         <p>You can download or Check your email for a copy</p>
       </div>
+      <div className={styles.container}>
+        <div className={styles.box}></div>
+        <div className={styles.border}></div>
+      </div>
     </div>
   );
 }
