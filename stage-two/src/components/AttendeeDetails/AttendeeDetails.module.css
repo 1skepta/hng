@@ -66,3 +66,50 @@
   font-size: 1.2rem;
   margin-top: 10px;
 }
+
+.nextncancel {
+  margin-top: 30px;
+}
+.nextncancel button {
+  text-align: center;
+  padding: 15px 0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  border-radius: 10px;
+  width: 100%;
+}
+.submit {
+  background-color: #24a0b5;
+  border: 1px solid #24a0b5;
+  color: white;
+}
+.cancel {
+  border: 1px solid #24a0b5;
+  background-color: inherit;
+  margin: 20px 0;
+  color: #24a0b5;
+}
+.details {
+  padding: 0 10px;
+}
+.details h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  margin: 0;
+}
+.details input,
+.details textarea {
+  outline: none;
+  background-color: inherit;
+  border: 1px solid #0d4751;
+  width: 95%;
+  color: white;
+  padding: 15px 10px;
+  font-size: 1rem;
+  border-radius: 7px;
+  margin: 5px 0 15px 0;
+}
+.details textarea {
+  height: 90px;
+}

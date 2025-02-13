@@ -77,7 +77,7 @@ function AttendeeDetails() {
 
       <div className={styles.details}>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className={styles.name}>
             <h3>Enter your name</h3>
             <input
               type="text"
@@ -89,7 +89,7 @@ function AttendeeDetails() {
             />
           </div>
 
-          <div>
+          <div className={styles.email}>
             <h3>Enter your email*</h3>
             <input
               type="email"
@@ -104,18 +104,22 @@ function AttendeeDetails() {
             )}
           </div>
 
-          <div>
+          <div className={styles.about}>
             <h3>About the project</h3>
             <textarea
               name="project"
               value={formData.project}
               onChange={handleChange}
               required
-              placeholder="Tell us about the project"
+              placeholder="Textarea"
             ></textarea>
           </div>
-
-          <button type="submit">Get My Free Ticket</button>
+          <div className={styles.nextncancel}>
+            <button className={styles.submit} type="submit">
+              Get My Free Ticket
+            </button>
+            <button className={styles.cancel}>Back</button>
+          </div>
         </form>
       </div>
     </div>
