@@ -14,6 +14,9 @@ function AttendeeDetails() {
           <span className={styles.light}>.</span>
           <span className={styles.dark}></span>
         </div>
+        <div className="">
+           <p className="text-4xl text-teal-500">hello</p>
+        </div>
       </header>
     </div>
   );
