@@ -14,8 +14,8 @@ function AttendeeDetails() {
           <span className={styles.light}>.</span>
           <span className={styles.dark}></span>
         </div>
-        <div className="">
-           <p className="text-4xl text-teal-500">hello</p>
+        <div className=" text-4xl text-green-400 text-wrap text-center">Remember i fixed this. The name is still Mr Pee !!!
+           <p className="text-4xl text-teal-500 cursor-pointer hover:text-red-400">Hello Skepta </p>
         </div>
       </header>
     </div>
