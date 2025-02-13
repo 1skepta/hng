@@ -4,6 +4,7 @@
   border-radius: 20px;
   padding: 10px 20px;
   color: white;
+  margin-bottom: 25px;
 }
 .selectTicket h3 {
   font-family: sans-serif;
@@ -46,12 +47,12 @@
 }
 .ticketType {
   border: 1px solid #0c3a41;
-  padding: 15px;
+  padding: 10px 15px;
   border-radius: 20px;
   background-color: #082228;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 .lists {
   display: flex;
@@ -60,8 +61,61 @@
   border-radius: 10px;
   padding: 15px;
   font-family: sans-serif;
+  margin: 10px 0;
 }
 .lists h1 {
   margin: 0;
   font-weight: 600;
+}
+.chevrondiv {
+  text-align: left;
+  border-radius: 8px;
+  background-color: #08252b;
+  border: 1px solid #0c3a41;
+  padding-left: 10px;
+}
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  background-color: inherit;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.6rem;
+}
+.chevsmalldiv {
+  font-size: 1.4rem;
+}
+.chevrondiv div {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 6px;
+}
+.bottom {
+  margin: 25px 0;
+}
+.nextncancel {
+  margin-top: 30px;
+}
+.nextncancel button {
+  text-align: center;
+  padding: 15px 0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  border-radius: 10px;
+  width: 100%;
+}
+.next {
+  background-color: #24a0b5;
+  border: 1px solid #24a0b5;
+  color: white;
+}
+.cancel {
+  border: 1px solid #24a0b5;
+  background-color: inherit;
+  margin: 20px 0;
+  color: #24a0b5;
 }
