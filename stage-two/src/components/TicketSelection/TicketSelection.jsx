@@ -62,7 +62,7 @@ function TicketSelection({ onNext, formData, setFormData }) {
   return (
     <div className={styles.selectTicket}>
       <header>
-        <h1>Ticket Selection</h1>
+        <h1 className={styles.i}>Ticket Selection</h1>
         <h3>Step 1/3</h3>
         <div className={styles.line}>
           <span className={styles.light}>.</span>

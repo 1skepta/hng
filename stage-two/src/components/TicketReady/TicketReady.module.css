@@ -6,6 +6,9 @@
   color: white;
   margin-bottom: 25px;
 }
+.flex h1 {
+  font-family: "JejuMyeongjo", serif;
+}
 
 .attendeedetails h3 {
   font-family: sans-serif;
