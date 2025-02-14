@@ -162,7 +162,6 @@ function AttendeeDetails({ onNext, onBack, formData, setFormData }) {
                 value={formData.project}
                 onChange={handleChange}
                 required
-                placeholder="Textarea"
               ></textarea>
             </div>
 
