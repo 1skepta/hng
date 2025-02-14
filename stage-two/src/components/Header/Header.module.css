@@ -13,6 +13,7 @@
   padding: 15px 10px;
   border-radius: 5px;
   user-select: none;
+  font-family: "JejuMyeongjo", serif;
 }
 .actionbar {
   list-style: none;
@@ -31,6 +32,7 @@
 @media (min-width: 600px) {
   .actionbar {
     display: flex;
+    font-family: "JejuMyeongjo", serif;
   }
   .parent {
     border-radius: 20px;

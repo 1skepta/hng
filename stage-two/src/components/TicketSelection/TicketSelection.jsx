@@ -71,9 +71,7 @@ function TicketSelection({ onNext, formData, setFormData }) {
       </header>
       <div className={styles.tabletBox}>
         <section className={styles.techember}>
-          <h1>
-            <em>T</em>ec<em>h</em>ember Fest ''25
-          </h1>
+          <h1>Techember Fest ''25</h1>
           <p>
             Join us for an unforgettable experience at [Event Name]! Secure your
             spot now.

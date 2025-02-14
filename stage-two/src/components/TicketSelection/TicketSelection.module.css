@@ -43,8 +43,8 @@
   margin-bottom: 40px;
 }
 .techember h1 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 700;
+  font-family: "Road Rage", serif;
+  font-size: 60px;
 }
 .ticketType {
   border: 1px solid #0c3a41;
@@ -106,7 +106,7 @@
 .nextncancel button {
   text-align: center;
   padding: 15px 0;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "JejuMyeongjo", serif;
   font-size: 1.5rem;
   font-weight: 300;
   border-radius: 10px;
