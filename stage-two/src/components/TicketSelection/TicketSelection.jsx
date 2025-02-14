@@ -27,7 +27,6 @@ function TicketSelection({ onNext, formData, setFormData }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // A TicketOption renders one option and calls onSelect when clicked
   const TicketOption = ({
     price,
     label,
@@ -74,7 +73,7 @@ function TicketSelection({ onNext, formData, setFormData }) {
       <div className={styles.tabletBox}>
         <section className={styles.techember}>
           <h1>
-            <em>T</em>ec<em>h</em>ember Fest '25
+            <em>T</em>ec<em>h</em>ember Fest ''25
           </h1>
           <p>
             Join us for an unforgettable experience at [Event Name]! Secure your

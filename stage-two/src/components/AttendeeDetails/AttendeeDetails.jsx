@@ -7,7 +7,6 @@ function AttendeeDetails({ onNext, onBack, formData, setFormData }) {
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [emailTouched, setEmailTouched] = useState(false);
 
-  // Persist attendee details to localStorage when these fields change
   useEffect(() => {
     localStorage.setItem("name", formData.name);
     localStorage.setItem("email", formData.email);

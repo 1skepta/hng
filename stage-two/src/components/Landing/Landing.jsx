@@ -6,7 +6,9 @@ import AttendeeDetails from "../AttendeeDetails/AttendeeDetails";
 import TicketReady from "../TicketReady/TicketReady";
 
 function Landing() {
-  const [step, setStep] = useState(1);
+  const initialStep = Number(localStorage.getItem("currentStep")) || 1;
+  const [step, setStep] = useState(initialStep);
+
   const [formData, setFormData] = useState({
     ticketType: "",
     ticketPrice: "",
@@ -16,8 +18,17 @@ function Landing() {
     project: localStorage.getItem("project") || "",
   });
 
-  const nextStep = () => setStep((prev) => prev + 1);
-  const prevStep = () => setStep((prev) => prev - 1);
+  const nextStep = () => {
+    const newStep = step + 1;
+    setStep(newStep);
+    localStorage.setItem("currentStep", newStep);
+  };
+
+  const prevStep = () => {
+    const newStep = step - 1;
+    setStep(newStep);
+    localStorage.setItem("currentStep", newStep);
+  };
 
   return (
     <div className={styles.back}>
