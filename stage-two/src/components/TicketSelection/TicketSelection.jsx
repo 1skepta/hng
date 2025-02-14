@@ -2,15 +2,18 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./TicketSelection.module.css";
 import { ChevronDown } from "lucide-react";
 
-function TicketSelection() {
+function TicketSelection({ onNext, formData, setFormData }) {
   const [chevronOpen, setChevronOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(1);
+  const [selectedValue, setSelectedValue] = useState(
+    formData.ticketQuantity || 1
+  );
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => setChevronOpen(!chevronOpen);
 
   const handleSelect = (value) => {
     setSelectedValue(value);
+    setFormData((prev) => ({ ...prev, ticketQuantity: value }));
     setChevronOpen(false);
   };
 
@@ -24,13 +27,39 @@ function TicketSelection() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const TicketOption = ({ price, label, availability }) => (
-    <div className={styles.lists}>
+  // A TicketOption renders one option and calls onSelect when clicked
+  const TicketOption = ({
+    price,
+    label,
+    availability,
+    onSelect,
+    isSelected,
+  }) => (
+    <div
+      className={styles.lists}
+      onClick={() => onSelect(price, label, availability)}
+      style={{
+        border: isSelected ? "2px solid blue" : "none",
+        cursor: "pointer",
+      }}
+    >
       <h1>{price}</h1>
       <p>{label}</p>
       <span>{availability}</span>
     </div>
   );
+
+  const handleTicketOptionSelect = (price, label, availability) => {
+    setFormData((prev) => ({ ...prev, ticketType: label, ticketPrice: price }));
+  };
+
+  const handleNext = () => {
+    if (!formData.ticketType) {
+      alert("Please select a ticket type.");
+      return;
+    }
+    onNext();
+  };
 
   return (
     <div className={styles.selectTicket}>
@@ -45,7 +74,7 @@ function TicketSelection() {
       <div className={styles.tabletBox}>
         <section className={styles.techember}>
           <h1>
-            <em>T</em>ec<em>h</em>ember Fest ''25
+            <em>T</em>ec<em>h</em>ember Fest '25
           </h1>
           <p>
             Join us for an unforgettable experience at [Event Name]! Secure your
@@ -66,16 +95,22 @@ function TicketSelection() {
               price="Free"
               label="REGULAR ACCESS"
               availability="20/52"
+              onSelect={handleTicketOptionSelect}
+              isSelected={formData.ticketType === "REGULAR ACCESS"}
             />
             <TicketOption
               price="$150"
               label="VIP ACCESS"
               availability="20/52"
+              onSelect={handleTicketOptionSelect}
+              isSelected={formData.ticketType === "VIP ACCESS"}
             />
             <TicketOption
               price="$150"
               label="VVIP ACCESS"
               availability="20/52"
+              onSelect={handleTicketOptionSelect}
+              isSelected={formData.ticketType === "VVIP ACCESS"}
             />
           </div>
         </section>
@@ -100,7 +135,9 @@ function TicketSelection() {
         </section>
 
         <footer className={styles.nextncancel}>
-          <button className={styles.next}>Next</button>
+          <button className={styles.next} onClick={handleNext}>
+            Next
+          </button>
           <button className={styles.cancel}>Cancel</button>
         </footer>
       </div>

@@ -121,6 +121,7 @@
   font-weight: 300;
   border-radius: 10px;
   width: 100%;
+  cursor: pointer;
 }
 .next {
   background-color: #24a0b5;

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./TicketReady.module.css";
 
-function TicketReady() {
+function TicketReady({ onBack, formData }) {
   return (
     <div className={styles.ticketready}>
       <header>
@@ -15,33 +15,36 @@ function TicketReady() {
       </header>
       <div className={styles.bookedticket}>
         <h1>Your Ticket is Booked!</h1>
-        <p>You can download or Check your email for a copy</p>
+        <p>You can download or check your email for a copy</p>
       </div>
       <div className={styles.ticketcontainer}>
         <div className={styles.ticketbox}>
           <div className={styles.techember}>
             <h1>
-              <em>T</em>ec<em>h</em>ember Fest ''25
+              <em>T</em>ec<em>h</em>ember Fest '25
             </h1>
-            <h3>🍭04 Rumens road, Ikoy, Lagos</h3>
+            <h3>🍭04 Rumens road, Ikoyi, Lagos</h3>
             <h3>📅March 15, 2025 | 7:00 PM</h3>
-            <img src="" alt="" />
+            <img src="" alt="Event" />
             <div className={styles.details}>
               <div className={styles.big}>
                 <div className={styles.small}>
-                  <span>Enter your name</span>
-                  <h4>Avi Chukwu</h4>
+                  <span>Name</span>
+                  <h4>{formData.name}</h4>
                 </div>
                 <div className={styles.smalll}>
-                  <span>Enter your email *</span> <h4>User@gmail.com</h4>
+                  <span>Email</span>
+                  <h4>{formData.email}</h4>
                 </div>
               </div>
               <div className={styles.big}>
                 <div className={styles.small}>
-                  <span>Ticket Type: </span> <h4>VVIP</h4>
+                  <span>Ticket Type:</span>
+                  <h4>{formData.ticketType}</h4>
                 </div>
                 <div className={styles.smalll}>
-                  <span>Ticket for : </span> <h4>1</h4>
+                  <span>Quantity:</span>
+                  <h4>{formData.ticketQuantity}</h4>
                 </div>
               </div>
               <div
@@ -52,22 +55,21 @@ function TicketReady() {
                   padding: "5px 0",
                 }}
               >
-                <span>Special Request ? </span>
-                <h4>
-                  Nil ? Or the users sad story they write in there gets this
-                  whole space, Max of three rows
-                </h4>
+                <span>About the project</span>
+                <h4>{formData.project}</h4>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className={styles.hack}>
-        <img src="/well.PNG" alt="qr code" />
+        <img src="/well.PNG" alt="QR code" />
       </div>
       <footer className={styles.nextncancel}>
         <button className={styles.next}>Download Ticket</button>
-        <button className={styles.cancel}>Book Another Ticket</button>
+        <button className={styles.cancel} onClick={onBack}>
+          Book Another Ticket
+        </button>
       </footer>
     </div>
   );

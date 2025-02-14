@@ -2,27 +2,17 @@ import React, { useRef, useState, useEffect } from "react";
 import styles from "./AttendeeDetails.module.css";
 import { FaCloudUploadAlt } from "react-icons/fa";
 
-function AttendeeDetails() {
+function AttendeeDetails({ onNext, onBack, formData, setFormData }) {
   const fileInputRef = useRef(null);
-
-  const [formData, setFormData] = useState({
-    name: localStorage.getItem("name") || "",
-    email: localStorage.getItem("email") || "",
-    project: localStorage.getItem("project") || "",
-  });
-
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [emailTouched, setEmailTouched] = useState(false);
 
+  // Persist attendee details to localStorage when these fields change
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      localStorage.setItem("name", formData.name);
-      localStorage.setItem("email", formData.email);
-      localStorage.setItem("project", formData.project);
-    }, 500);
-
-    return () => clearTimeout(timeout);
-  }, [formData]);
+    localStorage.setItem("name", formData.name);
+    localStorage.setItem("email", formData.email);
+    localStorage.setItem("project", formData.project);
+  }, [formData.name, formData.email, formData.project]);
 
   const handleUploadClick = () => {
     fileInputRef.current.click();
@@ -30,12 +20,10 @@ function AttendeeDetails() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-
     if (name === "email") {
       setIsEmailValid(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value));
     }
@@ -48,10 +36,12 @@ function AttendeeDetails() {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (!isEmailValid) {
-      e.preventDefault();
       alert("Please enter a valid email address.");
+      return;
     }
+    onNext();
   };
 
   const handleKeyDown = (e) => {
@@ -139,7 +129,7 @@ function AttendeeDetails() {
               <button className={styles.submit} type="submit">
                 Get My Free Ticket
               </button>
-              <button className={styles.cancel} type="button">
+              <button className={styles.cancel} type="button" onClick={onBack}>
                 Back
               </button>
             </div>
