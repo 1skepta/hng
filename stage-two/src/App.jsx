@@ -6,6 +6,9 @@ function App() {
   return (
     <div>
       <Landing />
+      <div className="bth">
+        <img src="/bottom.PNG" alt="BOTTOM" />
+      </div>
     </div>
   );
 }

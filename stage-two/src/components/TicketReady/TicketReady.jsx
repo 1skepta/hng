@@ -65,6 +65,10 @@ function TicketReady() {
       <div className={styles.hack}>
         <img src="/well.PNG" alt="qr code" />
       </div>
+      <footer className={styles.nextncancel}>
+        <button className={styles.next}>Next</button>
+        <button className={styles.cancel}>Cancel</button>
+      </footer>
     </div>
   );
 }
