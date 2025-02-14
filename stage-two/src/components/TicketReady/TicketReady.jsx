@@ -66,7 +66,14 @@ function TicketReady({ onBack, formData }) {
         <img src="/well.PNG" alt="QR code" />
       </div>
       <footer className={styles.nextncancel}>
-        <button className={styles.next}>Download Ticket</button>
+        <button
+          onClick={() => {
+            alert("Dey Play 😂");
+          }}
+          className={styles.next}
+        >
+          Download Ticket
+        </button>
         <button className={styles.cancel} onClick={onBack}>
           Book Another Ticket
         </button>
