@@ -42,59 +42,68 @@ function TicketSelection() {
           <span className={styles.dark}></span>
         </div>
       </header>
+      <div className={styles.tabletBox}>
+        <section className={styles.techember}>
+          <h1>
+            <em>T</em>ec<em>h</em>ember Fest ''25
+          </h1>
+          <p>
+            Join us for an unforgettable experience at [Event Name]! Secure your
+            spot now.
+          </p>
+          <h3>🍭 [Event Location]</h3>
+          <h3>March 15, 2025 | 7:00 PM</h3>
+        </section>
 
-      <section className={styles.techember}>
-        <h1>
-          <em>T</em>ec<em>h</em>ember Fest ''25
-        </h1>
-        <p>
-          Join us for an unforgettable experience at [Event Name]! Secure your
-          spot now.
-        </p>
-        <h3>🍭 [Event Location]</h3>
-        <h3>March 15, 2025 | 7:00 PM</h3>
-      </section>
+        <div className={styles.line}>
+          <span className={styles.dark}></span>
+        </div>
 
-      <div className={styles.line}>
-        <span className={styles.dark}></span>
+        <section>
+          <h2>Select Ticket Type:</h2>
+          <div className={styles.ticketType}>
+            <TicketOption
+              price="Free"
+              label="REGULAR ACCESS"
+              availability="20/52"
+            />
+            <TicketOption
+              price="$150"
+              label="VIP ACCESS"
+              availability="20/52"
+            />
+            <TicketOption
+              price="$150"
+              label="VVIP ACCESS"
+              availability="20/52"
+            />
+          </div>
+        </section>
+
+        <section className={styles.bottom}>
+          <h2>Number of Tickets</h2>
+          <div className={styles.chevrondiv} ref={dropdownRef}>
+            <button onClick={toggleDropdown} className={styles.chevron}>
+              {selectedValue}
+              <ChevronDown />
+            </button>
+            {chevronOpen && (
+              <div className={styles.chevsmalldiv}>
+                {[1, 2, 3, 4, 5].map((num) => (
+                  <div key={num} onClick={() => handleSelect(num)}>
+                    {num}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+
+        <footer className={styles.nextncancel}>
+          <button className={styles.next}>Next</button>
+          <button className={styles.cancel}>Cancel</button>
+        </footer>
       </div>
-
-      <section>
-        <h2>Select Ticket Type:</h2>
-        <div className={styles.ticketType}>
-          <TicketOption
-            price="Free"
-            label="REGULAR ACCESS"
-            availability="20/52"
-          />
-          <TicketOption price="$150" label="VIP ACCESS" availability="20/52" />
-          <TicketOption price="$150" label="VVIP ACCESS" availability="20/52" />
-        </div>
-      </section>
-
-      <section className={styles.bottom}>
-        <h2>Number of Tickets</h2>
-        <div className={styles.chevrondiv} ref={dropdownRef}>
-          <button onClick={toggleDropdown} className={styles.chevron}>
-            {selectedValue}
-            <ChevronDown />
-          </button>
-          {chevronOpen && (
-            <div className={styles.chevsmalldiv}>
-              {[1, 2, 3, 4, 5].map((num) => (
-                <div key={num} onClick={() => handleSelect(num)}>
-                  {num}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      <footer className={styles.nextncancel}>
-        <button className={styles.next}>Next</button>
-        <button className={styles.cancel}>Cancel</button>
-      </footer>
     </div>
   );
 }

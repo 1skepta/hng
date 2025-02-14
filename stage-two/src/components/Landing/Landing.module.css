@@ -3,3 +3,9 @@
   overflow: hidden;
   margin: 0;
 }
+@media (min-width: 600px) {
+  .back {
+    margin: 0 auto;
+    width: 75%;
+  }
+}
