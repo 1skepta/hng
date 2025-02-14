@@ -31,8 +31,9 @@ function TicketReady({ onBack, formData }) {
                 alt="Profile"
                 style={{
                   width: "150px",
-                  borderRadius: "50%",
-                  marginBottom: "10px",
+                  margin: "13px 0 15px 0",
+                  border: "3px solid #24a0b5",
+                  borderRadius: "10px",
                 }}
               />
             )}
