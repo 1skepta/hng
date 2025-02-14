@@ -49,6 +49,7 @@
   font-family: "Road Rage", serif;
   font-size: 3rem;
   margin-top: 10px;
+  margin: 0;
 }
 .ticketType {
   border: 1px solid #0c3a41;
