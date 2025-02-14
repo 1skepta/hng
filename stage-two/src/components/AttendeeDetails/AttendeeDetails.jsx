@@ -6,6 +6,7 @@ function AttendeeDetails({ onNext, onBack, formData, setFormData }) {
   const fileInputRef = useRef(null);
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [emailTouched, setEmailTouched] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState("idle"); // idle, uploading, success, error
 
   useEffect(() => {
     localStorage.setItem("name", formData.name);
@@ -15,6 +16,43 @@ function AttendeeDetails({ onNext, onBack, formData, setFormData }) {
 
   const handleUploadClick = () => {
     fileInputRef.current.click();
+  };
+
+  // Upload file to Cloudinary using fetch
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const uploadData = new FormData();
+    uploadData.append("file", file);
+    uploadData.append("upload_preset", "ticket-generator");
+
+    try {
+      setUploadStatus("uploading");
+      const response = await fetch(
+        "https://api.cloudinary.com/v1_1/dfiju18pp/image/upload",
+        {
+          method: "POST",
+          body: uploadData,
+        }
+      );
+      const data = await response.json();
+      if (data.secure_url) {
+        console.log("Uploaded Image URL:", data.secure_url);
+        setFormData((prev) => ({
+          ...prev,
+          profileImage: data.secure_url,
+        }));
+        localStorage.setItem("profileImage", data.secure_url);
+        setUploadStatus("success");
+      } else {
+        console.error("Error uploading image:", data);
+        setUploadStatus("error");
+      }
+    } catch (error) {
+      console.error("Upload failed:", error);
+      setUploadStatus("error");
+    }
   };
 
   const handleChange = (e) => {
@@ -72,11 +110,15 @@ function AttendeeDetails({ onNext, onBack, formData, setFormData }) {
                 accept="image/*"
                 ref={fileInputRef}
                 style={{ display: "none" }}
+                onChange={handleFileChange} // triggers the Cloudinary upload
                 required
               />
               <span>Drag & drop or click to upload</span>
             </div>
           </div>
+          {uploadStatus === "uploading" && <p>Uploading image...</p>}
+          {uploadStatus === "success" && <p>Image uploaded!</p>}
+          {uploadStatus === "error" && <p>Image upload failed. Try again.</p>}
         </div>
 
         <div className={styles.line}>

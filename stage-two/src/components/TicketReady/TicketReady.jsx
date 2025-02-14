@@ -25,7 +25,17 @@ function TicketReady({ onBack, formData }) {
             </h1>
             <h3>🍭04 Rumens road, Ikoyi, Lagos</h3>
             <h3>📅March 15, 2025 | 7:00 PM</h3>
-            <img src="" alt="Event" />
+            {formData.profileImage && (
+              <img
+                src={formData.profileImage}
+                alt="Profile"
+                style={{
+                  width: "150px",
+                  borderRadius: "50%",
+                  marginBottom: "10px",
+                }}
+              />
+            )}
             <div className={styles.details}>
               <div className={styles.big}>
                 <div className={styles.small}>
