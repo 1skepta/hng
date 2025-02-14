@@ -38,8 +38,7 @@ function TicketSelection({ onNext, formData, setFormData }) {
       className={styles.lists}
       onClick={() => onSelect(price, label, availability)}
       style={{
-        border: isSelected ? "2px solid blue" : "none",
-        cursor: "pointer",
+        backgroundColor: isSelected ? "#0e464f" : "",
       }}
     >
       <h1>{price}</h1>
