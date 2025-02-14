@@ -66,8 +66,8 @@ function TicketReady() {
         <img src="/well.PNG" alt="qr code" />
       </div>
       <footer className={styles.nextncancel}>
-        <button className={styles.next}>Next</button>
-        <button className={styles.cancel}>Cancel</button>
+        <button className={styles.next}>Download Ticket</button>
+        <button className={styles.cancel}>Book Another Ticket</button>
       </footer>
     </div>
   );
