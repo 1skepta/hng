@@ -116,3 +116,16 @@
 .error {
   color: red;
 }
+@media (min-width: 600px) {
+  .attendeedetails {
+    width: 60%;
+    margin: 0 auto 150px;
+    background-color: #041e23;
+  }
+  .tabletBox {
+    background-color: #08252b;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #0d4751;
+  }
+}

@@ -72,76 +72,77 @@ function AttendeeDetails() {
           <span className={styles.dark}></span>
         </div>
       </header>
-
-      <div className={styles.upload}>
-        <h2>Upload Profile Photo</h2>
-        <div className={styles.uploaddiv} onClick={handleUploadClick}>
-          <FaCloudUploadAlt size={40} />
-          <input
-            type="file"
-            accept="image/*"
-            ref={fileInputRef}
-            style={{ display: "none" }}
-            required
-          />
-          <span>Drag & drop or click to upload</span>
+      <div className={styles.tabletBox}>
+        <div className={styles.upload}>
+          <h2>Upload Profile Photo</h2>
+          <div className={styles.uploaddiv} onClick={handleUploadClick}>
+            <FaCloudUploadAlt size={40} />
+            <input
+              type="file"
+              accept="image/*"
+              ref={fileInputRef}
+              style={{ display: "none" }}
+              required
+            />
+            <span>Drag & drop or click to upload</span>
+          </div>
         </div>
-      </div>
 
-      <div className={styles.line}>
-        <span className={styles.dark} style={{ width: "100%" }}></span>
-      </div>
+        <div className={styles.line}>
+          <span className={styles.dark} style={{ width: "100%" }}></span>
+        </div>
 
-      <div className={styles.details}>
-        <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
-          <div className={styles.name}>
-            <h3>Enter your name</h3>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              placeholder="Your full name"
-            />
-          </div>
+        <div className={styles.details}>
+          <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
+            <div className={styles.name}>
+              <h3>Enter your name</h3>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Your full name"
+              />
+            </div>
 
-          <div className={styles.email}>
-            <h3>Enter your email*</h3>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              required
-              placeholder="Your email address"
-            />
-            {!isEmailValid && emailTouched && (
-              <p className={styles.error}>Invalid email address</p>
-            )}
-          </div>
+            <div className={styles.email}>
+              <h3>Enter your email*</h3>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                required
+                placeholder="Your email address"
+              />
+              {!isEmailValid && emailTouched && (
+                <p className={styles.error}>Invalid email address</p>
+              )}
+            </div>
 
-          <div className={styles.about}>
-            <h3>About the project</h3>
-            <textarea
-              name="project"
-              value={formData.project}
-              onChange={handleChange}
-              required
-              placeholder="Textarea"
-            ></textarea>
-          </div>
+            <div className={styles.about}>
+              <h3>About the project</h3>
+              <textarea
+                name="project"
+                value={formData.project}
+                onChange={handleChange}
+                required
+                placeholder="Textarea"
+              ></textarea>
+            </div>
 
-          <div className={styles.nextncancel}>
-            <button className={styles.submit} type="submit">
-              Get My Free Ticket
-            </button>
-            <button className={styles.cancel} type="button">
-              Back
-            </button>
-          </div>
-        </form>
+            <div className={styles.nextncancel}>
+              <button className={styles.submit} type="submit">
+                Get My Free Ticket
+              </button>
+              <button className={styles.cancel} type="button">
+                Back
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
