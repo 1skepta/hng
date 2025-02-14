@@ -109,6 +109,10 @@
 .hack img {
   width: 100%;
 }
+.smalll h4 {
+  width: 100%;
+  overflow: hidden;
+}
 
 .nextncancel {
   margin-top: 30px;
