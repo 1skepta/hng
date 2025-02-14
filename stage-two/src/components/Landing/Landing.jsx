@@ -9,9 +9,9 @@ function Landing() {
   return (
     <div className={styles.back}>
       <Header />
-      {/* <TicketSelection /> */}
+      <TicketSelection />
       {/* <AttendeeDetails /> */}
-      <TicketReady />
+      {/* <TicketReady /> */}
     </div>
   );
 }
