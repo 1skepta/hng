@@ -32,4 +32,11 @@
   .actionbar {
     display: flex;
   }
+  .parent {
+    border-radius: 20px;
+  }
+  .myticket {
+    border-radius: 10px;
+    margin-right: 10px;
+  }
 }

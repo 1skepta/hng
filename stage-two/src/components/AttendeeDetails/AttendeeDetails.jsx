@@ -75,16 +75,18 @@ function AttendeeDetails() {
       <div className={styles.tabletBox}>
         <div className={styles.upload}>
           <h2>Upload Profile Photo</h2>
-          <div className={styles.uploaddiv} onClick={handleUploadClick}>
-            <FaCloudUploadAlt size={40} />
-            <input
-              type="file"
-              accept="image/*"
-              ref={fileInputRef}
-              style={{ display: "none" }}
-              required
-            />
-            <span>Drag & drop or click to upload</span>
+          <div className={styles.uploadcontainer}>
+            <div className={styles.uploaddiv} onClick={handleUploadClick}>
+              <FaCloudUploadAlt size={40} />
+              <input
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                required
+              />
+              <span>Drag & drop or click to upload</span>
+            </div>
           </div>
         </div>
 
