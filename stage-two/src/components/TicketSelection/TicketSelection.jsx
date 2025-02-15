@@ -76,7 +76,7 @@ function TicketSelection({ onNext, formData, setFormData }) {
             Join us for an unforgettable experience at [Event Name]! Secure your
             spot now.
           </p>
-          <h3>🍭 [Event Location]</h3>
+          <h3>📍[Event Location]</h3>
           <h3>March 15, 2025 | 7:00 PM</h3>
         </section>
 

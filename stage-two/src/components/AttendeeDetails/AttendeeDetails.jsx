@@ -6,8 +6,7 @@ function AttendeeDetails({ onNext, onBack, formData, setFormData }) {
   const fileInputRef = useRef(null);
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [emailTouched, setEmailTouched] = useState(false);
-  const [uploadStatus, setUploadStatus] = useState("idle"); // idle, uploading, success, error
-
+  const [uploadStatus, setUploadStatus] = useState("idle");
   useEffect(() => {
     localStorage.setItem("name", formData.name);
     localStorage.setItem("email", formData.email);
@@ -18,7 +17,6 @@ function AttendeeDetails({ onNext, onBack, formData, setFormData }) {
     fileInputRef.current.click();
   };
 
-  // Upload file to Cloudinary using fetch
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -110,7 +108,7 @@ function AttendeeDetails({ onNext, onBack, formData, setFormData }) {
                 accept="image/*"
                 ref={fileInputRef}
                 style={{ display: "none" }}
-                onChange={handleFileChange} // triggers the Cloudinary upload
+                onChange={handleFileChange}
                 required
               />
               <span>Drag & drop or click to upload</span>
