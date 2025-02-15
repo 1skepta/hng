@@ -7,10 +7,14 @@ body {
 }
 .bth {
   display: none;
+  width: 100%;
 }
 
 @media (min-width: 600px) {
   .bth {
     display: block;
+  }
+  .bth img {
+    width: 100%;
   }
 }
