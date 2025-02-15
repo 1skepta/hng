@@ -21,7 +21,7 @@ function TicketReady({ onBack, formData }) {
         <div className={styles.ticketbox}>
           <div className={styles.techember}>
             <h1>Techember Fest ''25</h1>
-            <h3>🍭04 Rumens road, Ikoyi, Lagos</h3>
+            <h3>📍04 Rumens road, Ikoyi, Lagos</h3>
             <h3>📅March 15, 2025 | 7:00 PM</h3>
             {formData.profileImage && (
               <img
