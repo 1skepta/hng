@@ -31,7 +31,7 @@ function ActionButtons() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="p-5 rounded-2xl mt-1 z-10 bg-white"
+            className="p-5 rounded-2xl mt-1 z-50 bg-white"
             style={{
               border: "1px solid #f0f0f0",
               boxShadow: "0px -4px 10px rgba(0, 0, 0, 0.1",
