@@ -34,7 +34,10 @@ function ChatBox({ addMessage }) {
           onChange={handleInputChange}
         />
       </div>
-      <button className="bg-black p-2 rounded-full ml-2" onClick={handleSend}>
+      <button
+        className="bg-black p-2 rounded-full ml-2 cursor-pointer"
+        onClick={handleSend}
+      >
         <Send size={24} color="white" />
       </button>
     </div>
