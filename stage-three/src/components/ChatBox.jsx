@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Send } from "lucide-react";
 
-function ChatBox() {
+function ChatBox({ addMessage }) {
+  const [inputText, setInputText] = useState("");
+
+  const handleInputChange = (e) => {
+    setInputText(e.target.value);
+  };
+
+  const handleSend = () => {
+    if (inputText.trim() !== "") {
+      addMessage(inputText);
+      //   localStorage.setItem("userInput", inputText);
+      setInputText("");
+    }
+  };
+
   return (
     <div
       className="justify-between flex p-3 rounded-2xl items-center fixed bottom-0 left-0 right-0 z-10 mb-2 mx-5"
@@ -16,9 +30,11 @@ function ChatBox() {
           type="text"
           placeholder="Message SkeptaGPT"
           className="outline-0 w-full"
+          value={inputText}
+          onChange={handleInputChange}
         />
       </div>
-      <button className="bg-black p-2 rounded-full ml-2">
+      <button className="bg-black p-2 rounded-full ml-2" onClick={handleSend}>
         <Send size={24} color="white" />
       </button>
     </div>
