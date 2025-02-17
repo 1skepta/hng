@@ -1,4 +1,5 @@
 import React from "react";
+import ActionButtons from "./ActionButtons";
 
 function OutputDisplay({ messages }) {
   return (
@@ -9,16 +10,30 @@ function OutputDisplay({ messages }) {
           <p>Let Me See How I Can Help</p>
         </div>
       ) : (
-        <div className="flex justify-end p-5">
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className="p-3 bg-gray-100 rounded-xl"
-              style={{ maxWidth: "60%", wordBreak: "break-word" }}
-            >
-              {message}
-            </div>
-          ))}
+        <div>
+          <div className="flex justify-end p-5">
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className="p-3 bg-gray-100 rounded-xl"
+                style={{ maxWidth: "60%", wordBreak: "break-word" }}
+              >
+                {message}
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col justify-start p-5">
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className="p-3 "
+                style={{ maxWidth: "60%", wordBreak: "break-word" }}
+              >
+                {message}
+              </div>
+            ))}
+            <ActionButtons />
+          </div>
         </div>
       )}
     </div>
