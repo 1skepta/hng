@@ -5,12 +5,12 @@ function OutputDisplay({ messages }) {
   return (
     <div>
       {messages.length === 0 ? (
-        <div className="w-3/5 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className=" w-3/5 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <p className="text-3xl font-extrabold mb-3">Type In Your Text!</p>
           <p>Let Me See How I Can Help</p>
         </div>
       ) : (
-        <div className="p-5">
+        <div className="p-5 ">
           {messages.map((message, index) => (
             <div key={index} className="mt-4">
               <div
