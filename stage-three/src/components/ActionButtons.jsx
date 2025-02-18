@@ -24,7 +24,7 @@ function ActionButtons({ theme }) {
   }, [isOpen]);
 
   return (
-    <div className="ml-3 text-sm mb-20">
+    <div className="ml-2 text-sm mb-20">
       <div className="flex">
         <div
           ref={toggleButtonRef}

@@ -10,6 +10,12 @@ function ChatBox({ addMessage, theme }) {
     setInputText("");
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSend();
+    }
+  };
+
   return (
     <div
       className="flex p-3 rounded-2xl items-center fixed bottom-0 left-0 right-0 z-10 mb-2 mx-5 md:w-3/5 md:mx-auto"
@@ -30,6 +36,7 @@ function ChatBox({ addMessage, theme }) {
         }`}
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <button
         className={`p-2 rounded-full ml-2 cursor-pointer ${
