@@ -34,7 +34,7 @@ function Header({ clearData, toggleTheme, theme }) {
         </div>
         <div className="flex items-center">
           <button
-            className={`cursor-pointer mr-4 p-2 rounded-xl ${
+            className={`cursor-pointer mr-2 p-2 rounded-xl ${
               theme === "dark"
                 ? "bg-[#212121] hover:bg-[#303030]"
                 : "bg-white hover:bg-[#E8E8E880]"
@@ -48,7 +48,7 @@ function Header({ clearData, toggleTheme, theme }) {
             )}
           </button>
           <button
-            className={`cursor-pointer mr-4 p-2 rounded-xl ${
+            className={`cursor-pointer mr-3 p-2 rounded-xl ${
               theme === "dark"
                 ? "bg-[#212121] hover:bg-[#303030]"
                 : "bg-white hover:bg-[#E8E8E880]"
@@ -68,7 +68,7 @@ function Header({ clearData, toggleTheme, theme }) {
                 theme === "dark" ? "1px solid #b4b4b4" : "1px solid #5d5d5d",
             }}
             onClick={() => {
-              alert("Dey Play");
+              alert("Dey Play 🤣");
             }}
           >
             <Upload
