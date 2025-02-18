@@ -5,12 +5,17 @@ import OutputDisplay from "./OutputDisplay";
 
 function Landing() {
   const [messages, setMessages] = useState([]);
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     const storedMessages = JSON.parse(localStorage.getItem("messages"));
     if (storedMessages) {
       setMessages(storedMessages);
     }
+
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    document.documentElement.classList.toggle("dark", savedTheme === "dark");
   }, []);
 
   const addMessage = (newMessage) => {
@@ -24,11 +29,18 @@ function Landing() {
     setMessages([]);
   };
 
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+  };
+
   return (
     <div className="p-5">
-      <Header clearData={clearData} />
+      <Header clearData={clearData} toggleTheme={toggleTheme} theme={theme} />
       <OutputDisplay messages={messages} />
-      <ChatBox addMessage={addMessage} />
+      <ChatBox addMessage={addMessage} theme={theme} />
     </div>
   );
 }
