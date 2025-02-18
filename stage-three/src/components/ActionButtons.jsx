@@ -24,7 +24,7 @@ function ActionButtons({ theme }) {
   }, [isOpen]);
 
   return (
-    <div className="ml-3 text-sm">
+    <div className="ml-3 text-sm mb-20">
       <div className="flex">
         <div
           ref={toggleButtonRef}
@@ -57,7 +57,7 @@ function ActionButtons({ theme }) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="p-5 rounded-2xl mt-1 z-50 w-60 "
+            className="p-5 rounded-2xl mt-1 z-50 w-60"
             style={{
               border: theme === "dark" ? "none" : "1px solid #f0f0f0",
               boxShadow:

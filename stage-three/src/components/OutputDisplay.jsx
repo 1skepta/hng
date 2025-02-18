@@ -12,21 +12,25 @@ function OutputDisplay({ messages, theme }) {
       ) : (
         <div className="p-5 md:w-3/5 md:mx-auto">
           {messages.map((message, index) => (
-            <div key={index} className="mt-4">
+            <div key={index} className="mt-4 flex flex-col">
               <div
-                className="p-3 rounded-xl self-end mb-2"
+                className="p-3 rounded-xl mb-2 self-end"
                 style={{
                   maxWidth: "60%",
-                  wordBreak: "break-word",
                   backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
-                  marginLeft: "auto",
+                  display: "inline-block",
+                  wordBreak: "break-word",
                 }}
               >
                 {message}
               </div>
               <div
-                className="p-3"
-                style={{ maxWidth: "60%", wordBreak: "break-word" }}
+                className="p-3 rounded-xl self-start"
+                style={{
+                  maxWidth: "60%",
+                  display: "inline-block",
+                  wordBreak: "break-word",
+                }}
               >
                 {message}
               </div>
