@@ -22,7 +22,7 @@ function Landing({ theme, toggleTheme }) {
   return (
     <div className="p-5">
       <Header clearData={clearData} toggleTheme={toggleTheme} theme={theme} />
-      <OutputDisplay messages={messages} />
+      <OutputDisplay messages={messages} theme={theme} />
       <ChatBox addMessage={addMessage} theme={theme} />
     </div>
   );

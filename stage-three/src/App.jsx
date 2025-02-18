@@ -17,7 +17,9 @@ function App() {
   return (
     <div
       className={`min-h-screen transition-all duration-300 ${
-        theme === "dark" ? "bg-[#212121] text-white" : "bg-white text-black"
+        theme === "dark"
+          ? "bg-[#212121] text-[#ececec]"
+          : "bg-white text-[#0d0d0d]"
       }`}
     >
       <Landing theme={theme} toggleTheme={toggleTheme} />

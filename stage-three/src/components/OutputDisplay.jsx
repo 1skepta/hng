@@ -1,7 +1,7 @@
 import React from "react";
 import ActionButtons from "./ActionButtons";
 
-function OutputDisplay({ messages }) {
+function OutputDisplay({ messages, theme }) {
   return (
     <div>
       {messages.length === 0 ? (
@@ -18,7 +18,7 @@ function OutputDisplay({ messages }) {
                 style={{
                   maxWidth: "60%",
                   wordBreak: "break-word",
-                  backgroundColor: "#E8E8E880",
+                  backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
                   marginLeft: "auto",
                 }}
               >
@@ -32,7 +32,7 @@ function OutputDisplay({ messages }) {
               </div>
             </div>
           ))}
-          <ActionButtons />
+          <ActionButtons theme={theme} />
         </div>
       )}
     </div>
