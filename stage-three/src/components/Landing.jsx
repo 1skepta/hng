@@ -4,20 +4,15 @@ import ChatBox from "./ChatBox";
 import OutputDisplay from "./OutputDisplay";
 
 function Landing({ theme, toggleTheme }) {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(
+    () => JSON.parse(localStorage.getItem("messages")) || []
+  );
 
   useEffect(() => {
-    const storedMessages = JSON.parse(localStorage.getItem("messages"));
-    if (storedMessages) {
-      setMessages(storedMessages);
-    }
-  }, []);
+    localStorage.setItem("messages", JSON.stringify(messages));
+  }, [messages]);
 
-  const addMessage = (newMessage) => {
-    const updatedMessages = [...messages, newMessage];
-    setMessages(updatedMessages);
-    localStorage.setItem("messages", JSON.stringify(updatedMessages));
-  };
+  const addMessage = (newMessage) => setMessages([...messages, newMessage]);
 
   const clearData = () => {
     localStorage.removeItem("messages");

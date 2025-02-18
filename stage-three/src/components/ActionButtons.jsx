@@ -7,31 +7,20 @@ function ActionButtons() {
   const modalRef = useRef(null);
   const toggleButtonRef = useRef(null);
 
-  const toggleModal = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  const handleClickOutside = (event) => {
-    if (
-      modalRef.current &&
-      !modalRef.current.contains(event.target) &&
-      toggleButtonRef.current &&
-      !toggleButtonRef.current.contains(event.target)
-    ) {
-      setIsOpen(false);
-    }
-  };
+  const toggleModal = () => setIsOpen((prev) => !prev);
 
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    const handleClickOutside = (event) => {
+      if (
+        !modalRef.current?.contains(event.target) &&
+        !toggleButtonRef.current?.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
     };
+
+    if (isOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
   return (
@@ -67,12 +56,16 @@ function ActionButtons() {
             }}
           >
             <ul className="leading-9 cursor-pointer select-none">
-              <li>English - Detected</li>
-              <li>Portuguese</li>
-              <li>Spanish</li>
-              <li>Russian</li>
-              <li>Turkish</li>
-              <li>French</li>
+              {[
+                "English - Detected",
+                "Portuguese",
+                "Spanish",
+                "Russian",
+                "Turkish",
+                "French",
+              ].map((lang, index) => (
+                <li key={index}>{lang}</li>
+              ))}
             </ul>
           </motion.div>
         )}
