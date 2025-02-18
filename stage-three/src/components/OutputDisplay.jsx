@@ -5,9 +5,9 @@ function OutputDisplay({ messages, theme }) {
   return (
     <div>
       {messages.length === 0 ? (
-        <div className="w-3/5 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <p className="text-3xl font-extrabold mb-3">Type In Your Text!</p>
-          <p>Let Me See How I Can Help</p>
+        <div className="w-3/5 text-center select-none absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <p className="text-3xl font-extrabold mb-3">Welcome To SkeptaGPT</p>
+          <p> Senior Google Translate, Senior QuillBot</p>
         </div>
       ) : (
         <div className="p-5 md:w-3/5 md:mx-auto">
@@ -25,7 +25,7 @@ function OutputDisplay({ messages, theme }) {
                 {message}
               </div>
               <div
-                className="p-3 rounded-xl self-start"
+                className="px-3 pt-3 rounded-xl self-start"
                 style={{
                   maxWidth: "60%",
                   display: "inline-block",
