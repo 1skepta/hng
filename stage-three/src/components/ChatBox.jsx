@@ -12,7 +12,7 @@ function ChatBox({ addMessage, theme }) {
 
   return (
     <div
-      className="flex p-3 rounded-2xl items-center fixed bottom-0 left-0 right-0 z-10 mb-2 mx-5"
+      className="flex p-3 rounded-2xl items-center fixed bottom-0 left-0 right-0 z-10 mb-2 mx-5 md:w-3/5 md:mx-auto"
       style={{
         border: theme === "dark" ? "none" : "1px solid #f0f0f0",
         boxShadow:
@@ -32,7 +32,7 @@ function ChatBox({ addMessage, theme }) {
         onChange={(e) => setInputText(e.target.value)}
       />
       <button
-        className={`p-2 rounded-full ml-2 ${
+        className={`p-2 rounded-full ml-2 cursor-pointer ${
           theme === "dark" ? "bg-white" : "bg-black"
         }`}
         onClick={handleSend}

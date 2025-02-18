@@ -10,7 +10,7 @@ function OutputDisplay({ messages, theme }) {
           <p>Let Me See How I Can Help</p>
         </div>
       ) : (
-        <div className="p-5">
+        <div className="p-5 md:w-3/5 md:mx-auto">
           {messages.map((message, index) => (
             <div key={index} className="mt-4">
               <div
