@@ -45,7 +45,7 @@ function ActionButtons({ theme }) {
           style={{
             backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
           }}
-          className="p-1 px-2 rounded-xl cursor-pointer"
+          className="p-1 px-2 rounded-xl cursor-pointer "
         >
           Summarize
         </div>
@@ -57,7 +57,7 @@ function ActionButtons({ theme }) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="p-5 rounded-2xl mt-1 z-50 w-60"
+            className="p-5 rounded-2xl mt-1 z-50 w-60 "
             style={{
               border: theme === "dark" ? "none" : "1px solid #f0f0f0",
               boxShadow:
