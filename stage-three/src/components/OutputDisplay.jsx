@@ -2,6 +2,9 @@ import React from "react";
 import ActionButtons from "./ActionButtons";
 
 function OutputDisplay({ messages, theme }) {
+  const lastMessageText =
+    messages.length > 0 ? messages[messages.length - 1] : "";
+
   return (
     <div>
       {messages.length === 0 ? (
@@ -36,7 +39,7 @@ function OutputDisplay({ messages, theme }) {
               </div>
             </div>
           ))}
-          <ActionButtons theme={theme} />
+          <ActionButtons theme={theme} text={lastMessageText} />
         </div>
       )}
     </div>
