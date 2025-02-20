@@ -220,7 +220,6 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
                   <li
                     key={index}
                     onClick={() => handleLanguageSelect(lang.code)}
-                    className="hover:underline"
                   >
                     {lang.name}
                   </li>
