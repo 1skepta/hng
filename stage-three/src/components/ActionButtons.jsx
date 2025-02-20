@@ -2,10 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-function ActionButtons({ theme, text }) {
+function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
   const [isOpen, setIsOpen] = useState(false);
   const [detectedLanguage, setDetectedLanguage] = useState("");
-  const [translatedText, setTranslatedText] = useState("");
   const [isTranslating, setIsTranslating] = useState(false);
   const modalRef = useRef(null);
   const toggleButtonRef = useRef(null);
@@ -26,7 +25,7 @@ function ActionButtons({ theme, text }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // Detect language using the built-in AI Language Detector API.
+  // Use the built-in AI Language Detector API.
   useEffect(() => {
     if (text && text.trim() !== "") {
       async function detect() {
@@ -80,13 +79,11 @@ function ActionButtons({ theme, text }) {
     fr: "French",
   };
 
-  // Display name for the toggle button.
   const displayLanguage =
     detectedLanguage && languageMap[detectedLanguage]
       ? languageMap[detectedLanguage]
       : detectedLanguage || "Detecting...";
 
-  // Available languages array.
   const availableLanguages = [
     { code: "en", name: "English" },
     { code: "pt", name: "Portuguese" },
@@ -96,8 +93,6 @@ function ActionButtons({ theme, text }) {
     { code: "fr", name: "French" },
   ];
 
-  // Build the dropdown list: if a detected language exists (and is in our map),
-  // display it first (with "- Detected") and then the rest (without duplicates).
   let dropdownList = availableLanguages;
   if (detectedLanguage && languageMap[detectedLanguage]) {
     dropdownList = [
@@ -109,10 +104,9 @@ function ActionButtons({ theme, text }) {
     ];
   }
 
-  // Function to handle language selection and perform translation.
+  // Function to handle translation.
   const handleLanguageSelect = async (targetLanguage) => {
     if (!text || text.trim() === "") return;
-    setTranslatedText("");
     setIsTranslating(true);
     try {
       if ("ai" in window && window.ai && window.ai.translator) {
@@ -124,7 +118,7 @@ function ActionButtons({ theme, text }) {
         );
         if (availability === "no") {
           console.error("Translation not available for this language pair.");
-          setTranslatedText("Translation not available.");
+          onTranslationComplete("Translation not available.");
           setIsTranslating(false);
           return;
         }
@@ -147,47 +141,56 @@ function ActionButtons({ theme, text }) {
           await translator.ready;
         }
         const translated = await translator.translate(text);
-        setTranslatedText(translated);
+        onTranslationComplete(translated);
       } else {
         console.error("Translator API not available.");
-        setTranslatedText("Translator API not available.");
+        onTranslationComplete("Translator API not available.");
       }
     } catch (error) {
       console.error("Translation error:", error);
-      setTranslatedText("Translation error.");
+      onTranslationComplete("Translation error.");
     } finally {
       setIsTranslating(false);
       setIsOpen(false);
     }
   };
 
+  // Placeholder for Summarize action.
+  const handleSummarize = () => {
+    if (onSummarize) {
+      onSummarize(text);
+    } else {
+      alert("Summarize functionality is not implemented yet.");
+    }
+  };
+
   return (
-    <div className="ml-2 text-sm mb-20">
-      <div className="flex">
-        {/* Dropdown toggle showing the detected language */}
-        <div
-          ref={toggleButtonRef}
-          className="p-1 px-2 mr-2 rounded-xl flex items-center cursor-pointer"
-          onClick={toggleModal}
-          style={{
-            backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
-          }}
-        >
-          {displayLanguage}
-          <ChevronDown
-            className={`transform transition-transform ${
-              isOpen ? "rotate-180" : ""
-            }`}
-          />
-        </div>
-        <div
-          style={{
-            backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
-          }}
-          className="p-1 px-2 rounded-xl cursor-pointer"
-        >
-          Summarize
-        </div>
+    <div className="mt-2 flex items-center space-x-2">
+      {/* Detected language dropdown */}
+      <div
+        ref={toggleButtonRef}
+        className="inline-flex items-center cursor-pointer p-1 px-2 rounded-xl"
+        onClick={toggleModal}
+        style={{
+          backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
+        }}
+      >
+        {displayLanguage}
+        <ChevronDown
+          className={`transform transition-transform ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        />
+      </div>
+      {/* Summarize button */}
+      <div
+        onClick={handleSummarize}
+        className="p-1 px-2 rounded-xl cursor-pointer"
+        style={{
+          backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
+        }}
+      >
+        Summarize
       </div>
       <AnimatePresence>
         {isOpen && (
@@ -218,26 +221,12 @@ function ActionButtons({ theme, text }) {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* Display the translation result or a loading indicator */}
       {isTranslating && (
         <div
-          className="mt-2 p-2"
-          style={{
-            backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
-          }}
+          className="ml-2 text-sm"
+          style={{ color: theme === "dark" ? "#fff" : "#000" }}
         >
           Translating...
-        </div>
-      )}
-      {translatedText && (
-        <div
-          className="mt-2 p-2 rounded"
-          style={{
-            backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
-          }}
-        >
-          <strong>Translation:</strong>
-          <p>{translatedText}</p>
         </div>
       )}
     </div>
