@@ -12,12 +12,10 @@ function Landing({ theme, toggleTheme }) {
     localStorage.setItem("messages", JSON.stringify(messages));
   }, [messages]);
 
-  // Add a new user message.
   const addMessage = (newMessage) => {
     setMessages([...messages, newMessage]);
   };
 
-  // Add a new translated message bubble.
   const addTranslatedMessage = (translatedMessage) => {
     setMessages([...messages, translatedMessage]);
   };

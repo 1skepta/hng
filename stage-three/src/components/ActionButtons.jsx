@@ -14,8 +14,10 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        !modalRef.current?.contains(event.target) &&
-        !toggleButtonRef.current?.contains(event.target)
+        modalRef.current &&
+        !modalRef.current.contains(event.target) &&
+        toggleButtonRef.current &&
+        !toggleButtonRef.current.contains(event.target)
       ) {
         setIsOpen(false);
       }
@@ -25,7 +27,6 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // Use the built-in AI Language Detector API.
   useEffect(() => {
     if (text && text.trim() !== "") {
       async function detect() {
@@ -40,7 +41,6 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
             } else if (capabilities === "readily") {
               detector = await window.ai.languageDetector.create();
             } else {
-              // "after-download": wait for the model download.
               detector = await window.ai.languageDetector.create({
                 monitor(m) {
                   m.addEventListener("downloadprogress", (e) => {
@@ -69,7 +69,6 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
     }
   }, [text]);
 
-  // Map language codes to display names.
   const languageMap = {
     en: "English",
     pt: "Portuguese",
@@ -104,7 +103,6 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
     ];
   }
 
-  // Function to handle translation.
   const handleLanguageSelect = async (targetLanguage) => {
     if (!text || text.trim() === "") return;
     setIsTranslating(true);
@@ -155,7 +153,6 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
     }
   };
 
-  // Placeholder for Summarize action.
   const handleSummarize = () => {
     if (onSummarize) {
       onSummarize(text);
@@ -165,65 +162,69 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
   };
 
   return (
-    <div className="mt-2 flex items-center space-x-2">
-      {/* Detected language dropdown */}
-      <div
-        ref={toggleButtonRef}
-        className="inline-flex items-center cursor-pointer p-1 px-2 rounded-xl"
-        onClick={toggleModal}
-        style={{
-          backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
-        }}
-      >
-        {displayLanguage}
-        <ChevronDown
-          className={`transform transition-transform ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        />
+    <div className="mt-2 mb-12">
+      <div className="flex items-center space-x-2 relative">
+        <div
+          ref={toggleButtonRef}
+          className="inline-flex items-center cursor-pointer p-1 px-2 rounded-xl"
+          onClick={toggleModal}
+          style={{
+            backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
+          }}
+        >
+          {displayLanguage}
+          <ChevronDown
+            className={`transform transition-transform ${
+              isOpen ? "rotate-180" : ""
+            }`}
+          />
+        </div>
+        <div
+          onClick={handleSummarize}
+          className="p-1 px-2 rounded-xl cursor-pointer"
+          style={{
+            backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
+          }}
+        >
+          Summarize
+        </div>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              ref={modalRef}
+              initial={{ opacity: 0, y: 0 }}
+              animate={{ opacity: 1, y: 5 }}
+              exit={{ opacity: 0, y: 0 }}
+              className="p-5 rounded-2xl mt-1 z-50 w-60 absolute"
+              style={{
+                top: "100%",
+                left: 0,
+                border: theme === "dark" ? "none" : "1px solid #f0f0f0",
+                boxShadow:
+                  theme === "dark"
+                    ? "none"
+                    : "0px -4px 10px rgba(0, 0, 0, 0.1)",
+                backgroundColor: theme === "dark" ? "#323232d9" : "#ffffff",
+              }}
+            >
+              <ul className="leading-9 cursor-pointer select-none">
+                {dropdownList.map((lang, index) => (
+                  <li
+                    key={index}
+                    onClick={() => handleLanguageSelect(lang.code)}
+                    className="hover:underline"
+                  >
+                    {lang.name}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-      {/* Summarize button */}
-      <div
-        onClick={handleSummarize}
-        className="p-1 px-2 rounded-xl cursor-pointer"
-        style={{
-          backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
-        }}
-      >
-        Summarize
-      </div>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            ref={modalRef}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="p-5 rounded-2xl mt-1 z-50 w-60"
-            style={{
-              border: theme === "dark" ? "none" : "1px solid #f0f0f0",
-              boxShadow:
-                theme === "dark" ? "none" : "0px -4px 10px rgba(0, 0, 0, 0.1)",
-              backgroundColor: theme === "dark" ? "#323232d9" : "#ffffff",
-            }}
-          >
-            <ul className="leading-9 cursor-pointer select-none">
-              {dropdownList.map((lang, index) => (
-                <li
-                  key={index}
-                  onClick={() => handleLanguageSelect(lang.code)}
-                  className="hover:underline"
-                >
-                  {lang.name}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
       {isTranslating && (
         <div
-          className="ml-2 text-sm"
+          className="mt-2 text-sm"
           style={{ color: theme === "dark" ? "#fff" : "#000" }}
         >
           Translating...

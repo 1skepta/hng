@@ -5,4 +5,5 @@ body {
   box-sizing: border-box;
   margin: 0;
   color: #0d0d0d;
+  height: 100vh;
 }
