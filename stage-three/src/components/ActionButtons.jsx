@@ -155,7 +155,7 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
     if (onSummarize) {
       onSummarize(text);
     } else {
-      alert("Summarize giving me headaches.");
+      alert("Dey Play 😂");
     }
   };
 
