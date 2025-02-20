@@ -115,7 +115,6 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
           targetLanguage
         );
         if (availability === "no") {
-          console.error("Translation not available for this language pair.");
           onTranslationComplete("Translation not available.");
           setIsTranslating(false);
           return;
@@ -141,7 +140,6 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
         const translated = await translator.translate(text);
         onTranslationComplete(translated);
       } else {
-        console.error("Translator API not available.");
         onTranslationComplete("Translator API not available.");
       }
     } catch (error) {
@@ -157,19 +155,24 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
     if (onSummarize) {
       onSummarize(text);
     } else {
-      alert("Summarize functionality is not implemented yet.");
+      alert("Summarize giving me headaches.");
     }
   };
 
   return (
-    <div className="mt-2 mb-12">
+    <div className="mb-14">
       <div className="flex items-center space-x-2 relative">
         <div
           ref={toggleButtonRef}
-          className="inline-flex items-center cursor-pointer p-1 px-2 rounded-xl"
+          className={`inline-flex items-center cursor-pointer p-1 px-2 rounded-2xl text-sm ${
+            theme === "dark"
+              ? "bg-[#212121] hover:bg-[#303030]"
+              : "bg-white hover:bg-[#E8E8E880]"
+          }`}
           onClick={toggleModal}
           style={{
-            backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
+            border:
+              theme === "dark" ? "1px solid #b4b4b4" : "1px solid #5d5d5d",
           }}
         >
           {displayLanguage}
@@ -181,9 +184,14 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
         </div>
         <div
           onClick={handleSummarize}
-          className="p-1 px-2 rounded-xl cursor-pointer"
+          className={`p-1 px-2 rounded-2xl cursor-pointer text-sm ${
+            theme === "dark"
+              ? "bg-[#212121] hover:bg-[#303030]"
+              : "bg-white hover:bg-[#E8E8E880]"
+          }`}
           style={{
-            backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
+            border:
+              theme === "dark" ? "1px solid #b4b4b4" : "1px solid #5d5d5d",
           }}
         >
           Summarize

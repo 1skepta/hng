@@ -68,7 +68,7 @@ function Header({ clearData, toggleTheme, theme }) {
                 theme === "dark" ? "1px solid #b4b4b4" : "1px solid #5d5d5d",
             }}
             onClick={() => {
-              alert("Dey Play 🤣");
+              alert("Dey Play 😂");
             }}
           >
             <Upload
