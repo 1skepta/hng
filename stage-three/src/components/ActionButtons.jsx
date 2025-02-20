@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 function ActionButtons({ theme, text }) {
   const [isOpen, setIsOpen] = useState(false);
   const [detectedLanguage, setDetectedLanguage] = useState("");
+  const [translatedText, setTranslatedText] = useState("");
+  const [isTranslating, setIsTranslating] = useState(false);
   const modalRef = useRef(null);
   const toggleButtonRef = useRef(null);
 
@@ -24,7 +26,7 @@ function ActionButtons({ theme, text }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // Use the built-in AI Language Detector API.
+  // Detect language using the built-in AI Language Detector API.
   useEffect(() => {
     if (text && text.trim() !== "") {
       async function detect() {
@@ -94,9 +96,8 @@ function ActionButtons({ theme, text }) {
     { code: "fr", name: "French" },
   ];
 
-  // Build the dropdown list:
-  // If a detected language exists (and is in our map), display it first (with "- Detected")
-  // and then the rest of the languages (without duplicates).
+  // Build the dropdown list: if a detected language exists (and is in our map),
+  // display it first (with "- Detected") and then the rest (without duplicates).
   let dropdownList = availableLanguages;
   if (detectedLanguage && languageMap[detectedLanguage]) {
     dropdownList = [
@@ -107,6 +108,58 @@ function ActionButtons({ theme, text }) {
       ...availableLanguages.filter((lang) => lang.code !== detectedLanguage),
     ];
   }
+
+  // Function to handle language selection and perform translation.
+  const handleLanguageSelect = async (targetLanguage) => {
+    if (!text || text.trim() === "") return;
+    setTranslatedText("");
+    setIsTranslating(true);
+    try {
+      if ("ai" in window && window.ai && window.ai.translator) {
+        const translatorCapabilities =
+          await window.ai.translator.capabilities();
+        const availability = translatorCapabilities.languagePairAvailable(
+          detectedLanguage,
+          targetLanguage
+        );
+        if (availability === "no") {
+          console.error("Translation not available for this language pair.");
+          setTranslatedText("Translation not available.");
+          setIsTranslating(false);
+          return;
+        }
+        let translator;
+        if (availability === "readily") {
+          translator = await window.ai.translator.create({
+            sourceLanguage: detectedLanguage,
+            targetLanguage,
+          });
+        } else {
+          translator = await window.ai.translator.create({
+            sourceLanguage: detectedLanguage,
+            targetLanguage,
+            monitor(m) {
+              m.addEventListener("downloadprogress", (e) => {
+                console.log(`Downloaded ${e.loaded} of ${e.total} bytes.`);
+              });
+            },
+          });
+          await translator.ready;
+        }
+        const translated = await translator.translate(text);
+        setTranslatedText(translated);
+      } else {
+        console.error("Translator API not available.");
+        setTranslatedText("Translator API not available.");
+      }
+    } catch (error) {
+      console.error("Translation error:", error);
+      setTranslatedText("Translation error.");
+    } finally {
+      setIsTranslating(false);
+      setIsOpen(false);
+    }
+  };
 
   return (
     <div className="ml-2 text-sm mb-20">
@@ -153,12 +206,40 @@ function ActionButtons({ theme, text }) {
           >
             <ul className="leading-9 cursor-pointer select-none">
               {dropdownList.map((lang, index) => (
-                <li key={index}>{lang.name}</li>
+                <li
+                  key={index}
+                  onClick={() => handleLanguageSelect(lang.code)}
+                  className="hover:underline"
+                >
+                  {lang.name}
+                </li>
               ))}
             </ul>
           </motion.div>
         )}
       </AnimatePresence>
+      {/* Display the translation result or a loading indicator */}
+      {isTranslating && (
+        <div
+          className="mt-2 p-2"
+          style={{
+            backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
+          }}
+        >
+          Translating...
+        </div>
+      )}
+      {translatedText && (
+        <div
+          className="mt-2 p-2 rounded"
+          style={{
+            backgroundColor: theme === "dark" ? "#323232d9" : "#E8E8E880",
+          }}
+        >
+          <strong>Translation:</strong>
+          <p>{translatedText}</p>
+        </div>
+      )}
     </div>
   );
 }
