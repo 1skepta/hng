@@ -28,7 +28,7 @@ function ChatBox({ addMessage, theme }) {
     >
       <input
         type="text"
-        placeholder="Message SkeptaGPT"
+        placeholder="Enter Text To Detect Language or Summarize(150 words and above)"
         className={`outline-0 w-full ${
           theme === "dark"
             ? "placeholder-[#b4b4b4] text-[#ececec] bg-[#303030]"

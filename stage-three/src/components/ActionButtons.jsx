@@ -219,7 +219,14 @@ function ActionButtons({ theme, text, onTranslationComplete, onSummarize }) {
                 {dropdownList.map((lang, index) => (
                   <li
                     key={index}
-                    onClick={() => handleLanguageSelect(lang.code)}
+                    onClick={() =>
+                      index !== 0 && handleLanguageSelect(lang.code)
+                    }
+                    className={
+                      index === 0
+                        ? "text-gray-500 cursor-default"
+                        : "cursor-pointer"
+                    }
                   >
                     {lang.name}
                   </li>
